@@ -14,7 +14,7 @@
 <br>
 
 ### List
-```
+```java
 List<String> friends = new ArrayList<>();
 friends.add("Raphael");
 friends.add("Olivia");
