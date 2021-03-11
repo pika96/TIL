@@ -29,7 +29,7 @@
     - [계수](#계수)
     - [집합뷰](#집합뷰)
     - [마치며](#마치며)
-  - [출처](#출처)
+  - [참고 출처](#참고-출처)
 
 <br>
 
@@ -229,8 +229,9 @@ favoriteMovies.entrySet()
               .stream()
               .sorted(Map.Entry.comparingByKey())
               .forEachOrdered(System.out::println);
+
+// result = {Cristina=Matrix, Olivia=James Bond, Raphael=Star Wars};
 ```
-Value 순서대로 정렬
 
 ### getOrDefault 메서드
 요청한 키가 맵에 존재하지 않을 때 처리할 수 있는 메서드
@@ -246,7 +247,7 @@ Map<String, String> favoriteMovies
 
 System.out.println(favoriteMovies.getOrDefault("Olivia", "Matrix"));
 // -> James Bond 출력
-System.out.println(favoriteMovies.getOrDefault("Olivia", "Matrix"));
+System.out.println(favoriteMovies.getOrDefault("Thibaut", "Matrix"));
 // -> Matrix 출력
 ```
 
@@ -282,7 +283,7 @@ Map은 기존에 remove() 함수가 존재하지만, 자바 8에서는 키가 �
 ```java
 boolean remove(Object key, Object value)
 ```
-기존의 remove(Object key)는 단순히 해당 키의 값을 삭제했지만 위 메서드는 key와 value가 둘다 일치할 경우에만 삭제된다. 같지 않을 경우 false같고 삭제됬을 경우에는 true를 반환한다.
+기존의 remove(Object key)는 단순히 해당 키의 값을 삭제했지만 위 메서드는 key와 value가 둘다 일치할 경우에만 삭제된다. 같지 않을 경우 false, 삭제됬을 경우에는 true를 반환한다.
 
 ### 교체 패턴
 맵 항목을 바꾸는데 사용할 수 있는 두 개의 메서드가 맵에 추가되었다.
@@ -298,15 +299,15 @@ favoriteMovies.replaceAll((friends, movie) -> movie.toUpperCase());
 System.out.println(favoriteMovies);
 // result : {Olivai=JAMES BOND, Raphael=STAR WARS}
 ```
-- Replace : 키가 존재하면 맵의 값을 바꾼다. 키가 특정 값으로 매핑되었을 때만 값을 교체하는 오버로드 버전도 있다.
-
+- Replace : 키가 존재하면 맵의 값을 바꾼다. 키가 특정 값으로 매핑되었을 때만 값을 교체하는 오버로드 버전도 있다. 반환 값은 기존 값을 반환한다.
 ```java
 V replace(K key, V newValue)
 
 map.put("A", 5);
 System.out.println(map.replace("A", 1));
 System.out.println(map);
-//result : 5 {A=1}
+//result : 5
+//{A=1}
 ```
 ```java
 boolean replace(K key, V oldValue, V newValue)
@@ -355,6 +356,7 @@ public static void example() {
 ## 개선된 ConcurrentHashMap
 ConcurrentHashMap 클래스는 동시성 친화적이며 최신 기술을 반영한 HashMap 버전이다. ConcurrentHashMap은 내부 자료구조의 특정 부분만 잠궈 동시 추가, 갱신 작업을 허용한다. 따라서 동기화된 Hashtable 버전에 비해 읽기 쓰기 연산 성능이 월등하다. (표준 HashMap은 비동기로 동작)
 
+HashMap vs ConcurrentHashMap ?
 ### 리듀스와 검색
 스트림과 비슷한 3가지 연산
 - forEach : 각 (키, 값) 쌍에 주어진 액션을 실행
@@ -385,7 +387,7 @@ newKeySet을 새로운 메서드를 이용하여 ConcurrentHashMap으로 유지�
 
 <br>
 
-## 출처
+## 참고 출처
 출처: https://sticky32.tistory.com/entry/Java8-새로운-collection-api에-대해서 [Map 처리]
 
 출처 : http://blog.breakingthat.com/2019/04/04/java-collection-map-concurrenthashmap/ [ConcurrentHashMap]
