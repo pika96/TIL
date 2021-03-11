@@ -127,7 +127,9 @@ static <E> List<E> of(E... elements)
 
 ### removeIf
 
-숫자로 시작되는 참조 코드를 가진 트랜잭션을 삭제하는 코드
+removeIf : 프레디케이트를 만족하는 요소를 제거한다.
+
+ex) 숫자로 시작되는 참조 코드를 가진 트랜잭션을 삭제하는 코드
 ```java
 for (Transaction transaction : transactions) {
     if (Character.isDigit(transaction.getReferenceCode().charAt(0))) {
@@ -142,11 +144,13 @@ for(Iterator<Transaction> iterator = transactions.iterator();
     iterator.hasNext();) {
       Transaction transaction = iterator.next();
       if(Character.isDigit(transaction.getReferenceCode().charAt(0))) {
-        trasactions.remove(transaction); // -> iterator.remove();
+        trasactions.remove(transaction);
+        // -> iterator.remove(); Iterator 객체를 명시적으로 사용
       }
     }
 ```
 반복자의 상태와 컬렉션의 상태가 서로 동기화 되지 않아 발생한다.
+두 개의 개별 객체가 컬렉션을 관리한다!
 - Iterator 객체, next(), hasNext()를 이용해 소스를 질의한다.
 - Collection 객체 자체, remove()를 호출해 요소를 삭제한다.
 
@@ -158,8 +162,14 @@ removeIf 메서드는 삭제할 요소를 가리키는 프레디 케이트를 �
 
 ### replaceAll 메서드
 
-스트림 API를 사용
-첫 번째 문자를 대문자로 변경
+replaceAll : 리스트에서 이용할 수 있는 기능으로 UnaryOperator 함수를 이용해 요소를 바꾼다.
+
+UnaryOperator<T>란? : : java.util.function.Function<T,R> 에서 확장한 람다식으로서, <T>형태의 입력값을 받아 <T>형태의 출력값을 리턴한다.
+
+<br>
+
+ex) 첫 번째 문자를 대문자로 변경
+스트림 API를 사용하는 방법
 ```java
 referenceCodes.stream()
               .map(code -> Character.toUpperCase(code.charAt(0)) +
@@ -168,6 +178,11 @@ referenceCodes.stream()
               .forEach(System.out::println);
 ```
 기존의 컬렉션을 바꾸는 것이 아닌 새로운 컬렉션을 만든다.
+우리가 원하는 것은 기존 컬렉션을 바꾸는 것!
+
+<br>
+
+ListIterator 객체 사용
 ```java
 for(ListIterator<String> iterator = referenceCodes.listIterator();
     iterator.hasNext();) {
@@ -196,7 +211,7 @@ for(Map.Entry<String, Integer> entry: ageOfFriends.entrySet()){
   System.out.println(friend + " is " + age + " years old");
 }
 ```
-자바 8에서부터 지원하는 BiConsumer 메서드 사용
+자바 8에서부터 Map 인터페이스는 BiConsumer를 인수로 받는 forEcah 메서드를 지원한다.
 ```java
 ageOfFriends.forEach((friend, age) -> System.out.println(friend + " is " + age + " years old"));
 ```
@@ -368,6 +383,7 @@ newKeySet을 새로운 메서드를 이용하여 ConcurrentHashMap으로 유지�
 - Map 인터페이스는 자주 사용하는 패턴과 버그를 방지할 수 있도록 다양한 디폴트 메서드를 지원한다.
 - ConcurrentHashMap은 Map에서 상속받은 새 디폴트 메서드를 지원함과 동시에 스레드 안정성도 제공한다.
 
+<br>
 
 ## 출처
 출처: https://sticky32.tistory.com/entry/Java8-새로운-collection-api에-대해서 [Map 처리]
