@@ -442,6 +442,9 @@ SELECT 구에서 name 열을 지정하였으므로 그룹화된 name 열의 데�
 ```SQL
 SELECT name, COUNT(name) FROM sample51
 WHERE COUNT(name)=1 GROUP BY name; // X
+
+SELECT name, COUNT(name) FROM sample51
+GROUP BY name Having Count(name) = 1; // O
 ```
 name 열을 그룹화하여 행 개수가 하나만 존재하는 그룹을 검색하고 싶었지만 에러가 발생한다.
 에러가 발생한 이유는 GROUP BY와 WHERE 구의 내부처리 순서와 고나계가 있습니다. 즉, WHERE 구로 행을 검색하는 처리가 GROUP BY로 그룹화하는 처리보다 순서상 앞서기 때문입니다.
