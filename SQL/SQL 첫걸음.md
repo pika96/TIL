@@ -480,7 +480,6 @@ SELECT 선택하고 싶은 열 리스트 FROM 첫 번째 테이블 명 LEFT OUTE
   <p align="center"><img src='./image/join1.png' width="700"></p>
 
 __LEFT OUTER JOIN__
-
   <p align="center"><img src='./image/LEFT_OUTER_JOIN.png' width="700"></p>
 
 __INNER JOIN__
