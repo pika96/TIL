@@ -54,7 +54,7 @@
   - [그룹화 - GROUP BY](#그룹화---group-by)
     - [HAVING 구로 조건 지정](#having-구로-조건-지정)
   - [테이블 결합](#테이블-결합)
-    - [곱집합과 교차결합](#곱집합과-교차결합)
+    - [Join](#join)
 
 ## SQL 조회
 ```SQL
@@ -458,7 +458,33 @@ HAVING 구는 GROUP BY 구의 뒤에 기술하며 WHERE 구와 동일하게 조�
 
 ## 테이블 결합
 
-### 곱집합과 교차결합
+### Join
 
-<p align="center"><img src='./image/product.jpg' width="300"><br>곱집합</p>
+```SQL
+// 내부 결합
+SELECT 선택하고 싶은 열 리스트 FROM 첫 번째 테이블명 INNER JOIN 두 번째 테이블명 ON 결합 조건
 
+// 외부 결합
+SELECT 선택하고 싶은 열 리스트 FROM 첫 번째 테이블 명 LEFT OUTER JOIN 두 번째 테이블명 ON 결합 조건
+```
+
+- 결합을 사용하는 이유
+  - 매 테이블은 한가지의 테마를 가짐으로써 테이블은 분리시킨다.
+  - 분리시킨 테이블은 기본키와 외래키를 사용하여 결합함으로써 분리시킨 테이블을 결합시켜 조회할 수 있다.
+
+- 내부 결합
+  - `on`이 지정한 결합 조건에 일치하는 행만을 2개의 테이블로부터 가져올 수 있다.
+- 외부 결합
+  - 한 쪽 테이블을 기준으로 전체 행을 표시하고 다른 테이블은 값이 있으면 표시하고 없을 경우 NULL로 표시
+
+  <p align="center"><img src='./image/join1.png' width="700"></p>
+
+__LEFT OUTER JOIN__
+
+  <p align="center"><img src='./image/LEFT_OUTER_JOIN.png' width="700"></p>
+
+__INNER JOIN__
+  <p align="center"><img src='./image/INNER_JOIN.png' width="700"></p>
+
+__FULL OUTER JOIN__
+  <p align="center"><img src='./image/FULL_OUTER_JOIN.png' width="700"></p>
