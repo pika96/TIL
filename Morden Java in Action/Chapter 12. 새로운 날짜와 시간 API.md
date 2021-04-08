@@ -8,6 +8,11 @@
     - [날짜와 시간 조합](#날짜와-시간-조합)
     - [Instant 클래스 : 기계의 날짜와 시간](#instant-클래스--기계의-날짜와-시간)
     - [Duration과 Period 정의](#duration과-period-정의)
+  - [날짜 조정, 파싱, 포매팅](#날짜-조정-파싱-포매팅)
+    - [TemporalAdjusters 사용하기](#temporaladjusters-사용하기)
+    - [날짜와 시간 객체 출력과 파싱](#날짜와-시간-객체-출력과-파싱)
+  - [다양한 시간대와 캘린더 활용 방법](#다양한-시간대와-캘린더-활용-방법)
+  - [마치며](#마치며)
 
 <br>
 
@@ -103,4 +108,108 @@ Instant.ofEpochSecond(4, -1_000_000_000); // 4초 이전의 1억 나노초(1초)
 ```
 LocalDate 등을 포함하여 사람이 읽을 수 있는 날짜 시간 클래스에서 그랬던 것처럼 Instant클래스도 사람이 확인할 수 있도록 시간을 표시해주는 정적 팩토리 메서드 now를 제공한다. 하지만 Instant는 기계 전용의 유틸리티라는 점을 기억하자. 즉, Instant는 초와 나노초 정보를 포함한다. 따라서 Instant는 사람이 읽을 수 있는 시간 정보를 제공하지 않는다.
 
+<br>
+
 ### Duration과 Period 정의
+두 시간 객체 사이의 지속시간은 duration을 사용하여 만들 수 있다. 다음 코드처럼 Duration 클래스의 정적 팩토리 메서드 between을 이용하여 두 개의 LocalTime, LocalDateTime 또는 Instant로 Duration을 만들 수 있다.
+```java
+Duration d1 = Duration.between(time1, time2);
+Duration d1 = Duration.between(dateTime1, dateTime2);
+Duration d2 = Duration.between(instant1, instant2);
+```
+이 떄 Duration은 초와 나노초로 시간 단위를 표현하므로 between 메서드에 LocalDate를 전달할 수 없다. 대신 Period 클래스를 사용하여 년, 월, 일로 표현할 수 있다.
+```java
+Period tenDays = Period.between(LocalDate.of(2017, 9, 11), LocalDate.of(2017, 9, 21));
+```
+이 외에도 Duration과 Period 클래스는 다양한 팩토리 메서드를 제공한다.
+```java
+Duration threeMinutes = Duration.ofMinutes(3);
+Duration threeMinutes = Duration.of(3, ChronoUnit.MINUTES);
+Period tenDays = Period.ofDays(10);
+Period threeWeeks = Period.ofWeeks(3);
+Period twoYearsSixMonthsOneDay = Period.of(2, 6, 1);
+```
+
+다음 표는 Duration과 Period 클래스가 공통으로 제공하는 메서드를 보여준다.
+
+  <p align="center"><img src='./images/Chapter12/Duration_Period.png' width="700"></p>
+
+지금까지 살펴본 모든 클래스는 불변이다.
+
+<br>
+
+## 날짜 조정, 파싱, 포매팅
+withAttribute 메서드로 기존의 LocalDate를 바꾼 버전을 직접 간단하게 만들 수 있다.
+```java
+LocalDate date1 = LocalDate.of(2017, 9, 21); 2017-09-21
+LocalDate date2 = date1.withYear(2011); 2011-09-21
+LocalDate date3 = date2.withDayOfMonth(25); 2011-09-25
+LocalDate date4 = date3.with(ChronoField.MONTH_OF_YEAR, 2); 2011-02-25
+```
+또한 지정된 시간을 추가하거나 뺄 수 있다.
+```java
+LocalDate date1 = LocalDate.of(2017, 9, 21); 2017-09-21
+LocalDate date2 = date1.plusWeeks(1); 2017-09-28
+LocalDate date3 = date2.minusYears(6); 2011-09-28
+LocalDate date4 = date3.plus(6, ChronoUnit.MONTHS); 2012-03-28
+```
+
+LocalDate, LocalTime, LocalDateTime, Instant 등 날짜와 시간을 표현하는 모든 클래스는 서
+로 비슷한 메서드를 제공한다. 다음 표는 이들 공통 메서드를 설명한다.
+
+  <p align="center"><img src='./images/Chapter12/DateTimeMethod.png' width="700"></p>
+
+<br>
+
+### TemporalAdjusters 사용하기
+TemporalAdjusters를 활용하여 더 복잡하게 날짜 조정 기능을 사용할 수 있다.
+```java
+import static java.time.temporal.TemporalAdjusters.*;
+LocalDate date1 = LocalDate.of(2014, 3, 18); 2014-03-18
+LocalDate date2 = date1.with(nextOrSame(DayOfWeek.SUNDAY)); 2014-03-23
+LocalDate date3 = date2.with(lastDayOfMonth()); 2014-03-31
+```
+다음 표는 다양한 TemporalAdjusters의 팩토리 메서드로 만들 수 있는 TemporalAdjuster 리스트를 보여준다.
+
+  <p align="center"><img src='./images/Chapter12/TemporalAdjusters.png' width="700"></p>
+
+
+<br>
+
+### 날짜와 시간 객체 출력과 파싱
+날짜와 시간 관련 작업에서 포매팅과 파싱은 서로 떨어질 수 없는 관계다. 심지어 포매팅과 파싱 전용 패키지인 java.time.format이 새로 추가되었다. 이 패키지에서 가장 중요한 클래스는 DateTimeFormatter다. 정적 팩토리 메서드와 상수를 이용해서 손쉽게 포매터를 만들 수 있다. DateTimeFormatter 클래스는 BASIC_ISO_DATE와 ISO_LOCAL_DATE 등의 상수를 미리 정의하고 있다. DateTimeFormatter를 이용해서 날짜나 시간을 특정 형식의 문자열로 만들 수 있다. 다음은 두 개의 서로 다른 포매터로 문자열을 만드는 예제다.
+```java
+LocalDate date = LocalDate.of(2014, 3, 18);
+String s1 = date.format(DateTimeFormatter.BASIC_ISO_DATE); 20140318
+String s2 = date.format(DateTimeFormatter.ISO_LOCAL_DATE); 2014-03-18
+```
+반대의 경우도 가능하다.
+```java
+LocalDate date1 = LocalDate.parse("20140318", DateTimeFormatter.BASIC_ISO_DATE);
+LocalDate date2 = LocalDate.parse("2014-03-18", DateTimeFormatter.ISO_LOCAL_DATE);
+```
+
+모든 DateTimeFormatter는 스레드에서 안전하게 사용할 수 있는 클래스다. 또한 특정 패턴으로 포매터를 만들 수 있는 정적 팩토리 메서드도 제공한다.
+```java
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+LocalDate date1 = LocalDate.of(2014, 3, 18);
+String formattedDate = date1.format(formatter);
+LocalDate date2 = LocalDate.parse(formattedDate, formatter);
+```
+
+<br>
+
+## 다양한 시간대와 캘린더 활용 방법
+java.time.ZoneId 클래스를 이용하여 시간대를 간단하게 처리할 수 있다.
+
+<br>
+
+## 마치며
+- 자바 8 이전 버전에서 제공하는 기존의 java.util.Date 클래스와 관련 클래스에서는 여러 불일치점들과 가변성, 어설픈 오프셋, 기본값, 잘못된 이름 결정 등의 설계 결함이 존재했다.
+- 새로운 날짜와 시간 API에서 날짜와 시간 객체는 모두 불변이다.
+- 새로운 API는 각각 사람과 기계가 편리하게 날짜와 시간 정보를 관리할 수 있도록 두 가지 표현 방식을 제공한다.
+- 날짜와 시간 객체를 절대적인 방법과 상대적인 방법으로 처리할 수 있으며 기존 인스턴스를 변환하지 않도록 처리 결과로 새로운 인스턴스가 생성된다.
+- TemporalAdjuster를 이용하면 단순히 값을 바꾸는 것 이상의 복잡한 동작을 수행할 수 있으며 자신만의 커스텀 날짜 변환 기능을 정의할 수 있다.
+- 날짜와 시간 객체를 특정 포맷으로 출력하고 파싱하는 포매터를 정의할 수 있다. 패턴을 이용하거나 프로그램으로 포매터를 만들 수 있으며 포매터는 스레드 안정성을 보장한다.
+- 특정 지역/장소에 상대적인 시간대 또는 UTC/GMT 기준의 오프셋을 이용해서 시간대를 정의할 수 있으며 이 시간대를 날짜와 시간 객체에 적용해서 지역화할 수 있다.
+- ISO-8601 표준 시스템을 준수하지 않는 캘린더 시스템도 사용할 수 있다.
