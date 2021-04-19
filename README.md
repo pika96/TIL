@@ -7,7 +7,7 @@
 
 
 ## JAVA
-* [모던 자바 인 액션](https://github.com/pika96/TIL/tree/master/Morden%20Java%20in%20Action)
+* [모던 자바 인 액션](https://github.com/pika96/TIL/tree/master/JAVA/Morden%20Java%20in%20Action)
 * [VO DTO DAO](https://github.com/pika96/TIL/blob/master/JAVA/VO%20DTO%20DAO.md)
 
 ## SQL
