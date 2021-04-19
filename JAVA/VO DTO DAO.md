@@ -6,8 +6,10 @@
   - [VO](#vo)
   - [DTO](#dto)
   - [DAO](#dao)
+    - [DAO vs Repository ??](#dao-vs-repository-)
   - [참고 자료](#참고-자료)
 
+<br>
 
 ## VO
 - Value Object는 말 그대로 값 그 자체를 표현하는 객체를 의미한다.
@@ -29,6 +31,8 @@ public final static Color GREEN = new Color(0,255,0,0);
 }
 ```
 위와 같은 색상 객체가 있고 빨강과 초록이 있다. 코드에서 빨강 또는 초록을 사용할 때, Color.RED, Color.GREEN 를 사용하면 된다. 즉, 값 객체 Color.RED, Color.GREEN 자체로서 의미가 있게 된다.
+
+<br>
 
 ## DTO
 - Data Transfer Object (데이터 전송 객체)
@@ -64,9 +68,29 @@ public class User {
 }
 ```
 
+<br>
+
 ## DAO
+ - 실제로 DB에 접근하는 객체이다.
+ - Service와 DB를 연결하는 고리의 역할을 한다.
+ - 데이터베이스를 사용해 데이터를 조회하거나 조작하는 기능을 전담하는 객체이다.
+ - 데이터베이스에 대한 접근을 DAO만 하게되면 다수의 데이터베이스 호출 문제를 해결할 수 있다는 장점이 있다.
+
+```java
+public class DAO{
+	public void addData(DTO dto){
+		//Connection with DB and add Data
+	}
+	public void deleteData(DTO dto){
+		//Connection with DB and delete Data
+	}
+}
+```
+
+### DAO vs Repository ??
 
 ## 참고 자료
 - https://ijbgo.tistory.com/9
 - https://gmlwjd9405.github.io/2018/12/25/difference-dao-dto-entity.html
 - https://github.com/binghe819/TIL/blob/master/Spring/%EA%B8%B0%ED%83%80/DTO%2C%20VO.md
+- https://2ssue.github.io/programming/190423_PJI/
