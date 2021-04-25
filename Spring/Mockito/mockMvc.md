@@ -7,6 +7,7 @@
     - [요청 데이터 설정](#요청-데이터-설정)
     - [실행 결과 검증](#실행-결과-검증)
     - [실행 결과 출력](#실행-결과-출력)
+  - [Post 방식으로 요청 보내기](#post-방식으로-요청-보내기)
   - [참고 자료](#참고-자료)
 
 
@@ -148,5 +149,79 @@ public void testBooks() throws Exception {
 }
 ```
 
+<br>
+
+## Post 방식으로 요청 보내기
+1. VO 추가
+```java
+//info.java
+public class Info {
+  private String name;
+  private String id;
+
+  public Info(String name, String id) {
+    this.name = name;
+    this.id = id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getId() {
+    return id;
+  }
+}
+```
+
+2. Controller 추가
+```java
+// controller.java
+@RestController
+@RequestMapping("/mock")
+public class controller {
+
+  // ...
+
+  @PostMapping("/Info")
+  public ResponseEntity<String> post(@RequestBody Info info){
+    return ResponseEntity.ok().body(new Info("피카", "pika"));
+  }
+  
+}
+```
+
+3. Test 추가
+```java
+// controllerTest.java
+@RunWith(SpringRunner.class)
+@WebMvcTest(controller.class)
+public class controllerTest {
+
+  @Autowired
+  private MockMvc mockMvc;
+
+  @Autowired
+  private ObjectMapper objectMapper;
+
+  // ...
+
+  @Test
+  public void 테스트_POST() throws Exception {
+
+    String content = objectMapper.writeValueAsString(new Info("피카", "pika"));
+
+    mockMvc.perform(post("/Info")
+        .content(content)
+        .contentType(MediaType.APPLICATION_JSON)
+        .accept(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(jsonPath("name").value("피카"))
+        .andExpect(jsonPath("id").value("pika"))
+        .andDo(print());
+  }
+}
+```
 ## 참고 자료
 - https://itmore.tistory.com/entry/MockMvc-%EC%83%81%EC%84%B8%EC%84%A4%EB%AA%85
+- https://shinsunyoung.tistory.com/52
