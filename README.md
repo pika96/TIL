@@ -12,7 +12,7 @@
 * [모던 자바 인 액션](https://github.com/pika96/TIL/tree/master/JAVA/Morden%20Java%20in%20Action)
 * [VO DTO DAO](https://github.com/pika96/TIL/blob/master/JAVA/VO%20DTO%20DAO.md)
 * Test
-  * [Mock](https://github.com/pika96/TIL/tree/master/JAVA/Test/Mockito)
+  * [Mock](https://github.com/pika96/TIL/tree/master/JAVA/Test/Mock)
 
 ## 데이터 베이스
 - [h2](https://github.com/pika96/TIL/blob/master/DataBase/h2/h2.md)
