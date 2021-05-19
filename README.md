@@ -12,6 +12,7 @@
 * [VO DTO DAO](https://github.com/pika96/TIL/blob/master/JAVA/VO%20DTO%20DAO.md)
 * Test
   * [Mock](https://github.com/pika96/TIL/tree/master/JAVA/Test/Mock)
+  * [Acceptance Test](https://github.com/pika96/TIL/blob/master/JAVA/Test/Acceptance%20Test.md)
 
 ## 데이터 베이스
 - [h2](https://github.com/pika96/TIL/blob/master/DataBase/h2/h2.md)
