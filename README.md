@@ -16,6 +16,7 @@
   * [Mock](https://github.com/pika96/TIL/tree/master/JAVA/Test/Mock)
   * [Acceptance Test](https://github.com/pika96/TIL/blob/master/JAVA/Test/Acceptance%20Test.md)
 * [DTO 사용 범위](https://github.com/pika96/TIL/blob/master/Spring/DTO%EC%9D%98%20%EC%82%AC%EC%9A%A9%20%EB%B2%94%EC%9C%84.md)
+* [예외 처리](https://github.com/pika96/TIL/blob/master/JAVA/%EC%98%88%EC%99%B8%20%EC%B2%98%EB%A6%AC.md)
 
 ## 데이터 베이스
 - [h2](https://github.com/pika96/TIL/blob/master/DataBase/h2/h2.md)
