@@ -29,6 +29,10 @@ JWT는 JSON Web Token의 약자로 [웹표준](https://datatracker.ietf.org/doc/
 - Payload 부분에는 토큰에 담을 정보가 들어있습니다.
 - 그림에서는 3가지 정보가 들어있는데 이 정보 하나를 클레임(claim)이라고 부르고 이는 name/ value의 한쌍으로 이루어져있습니다.
 - 토큰에는 여러 개의 클레임을 넣을 수 있습니다.
+- 클레임의 종류는 종 3가지로 분류됩니다.
+    - registered 클레임
+    - public 클레임
+    - private 클레임
 - 클레임에 대한 자세한 정보는 [이곳](https://velopert.com/2389)
 
 ### Signature
