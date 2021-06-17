@@ -10,6 +10,7 @@
 * [JWT](https://github.com/pika96/TIL/blob/master/Spring/JWT.md)
 * [ApplicationContext](https://github.com/pika96/TIL/blob/master/Spring/ApplicationContext.md)
 * [트랜잭션과 @Transactional](https://github.com/pika96/TIL/blob/master/Spring/Transaction.md)
+* [HandlerInterceptor](https://github.com/pika96/TIL/blob/master/Spring/HandlerInterceptor.md)
 
 ## JAVA
 * [모던 자바 인 액션](https://github.com/pika96/TIL/tree/master/JAVA/Morden%20Java%20in%20Action)
