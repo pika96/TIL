@@ -263,3 +263,4 @@ protected void doDispatch(HttpServletRequest request, HttpServletResponse respon
 - https://velog.io/@y_dragonrise/Servlet-Servlet-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4
 - https://velog.io/@han_been/%EC%84%9C%EB%B8%94%EB%A6%BF-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88Servlet-Container-%EB%9E%80
 - https://galid1.tistory.com/525
+- https://github.com/binghe819/TIL/blob/master/Spring/MVC/image/mvc-flow.png
