@@ -17,7 +17,6 @@
 > 서블릿  
 > 웹 클라이언트로부터 요청을 받아 응답을 처리해서 결과를 반환하는 자바 프로그램
 
-
 ```java
 public interface Servlet {
     public void init(ServletConfig config) throws ServletException;
@@ -51,7 +50,81 @@ __getServletConfig()__
 __getServletInfo()__
 - 작성자, 버전, 저작관과 같은 정보를 반환
 
-서블릿은 인터페이스로 이루어져 있으며, 메서드를 통해 서블릿을 초기화하고, 서비스를 요청하고, 할 일을 다한 서블릿을 삭제한다.
+서블릿은 인터페이스로 이루어져 있으며, 메서드를 통해 서블릿을 초기화하고, 서비스를 요청하고, 할 일을 다한 서블릿을 삭제한다.  
+
+```java
+Servlet -> GenericServlet -> HttpServlet
+public interface Servlet
+public abstract class GenericServlet implements Servlet, ServletConfig,
+        java.io.Serializable
+public abstract class HttpServlet extends GenericServlet
+```
+```java
+protected void service(HttpServletRequest req, HttpServletResponse resp)
+        throws ServletException, IOException {
+
+        String method = req.getMethod();
+
+        if (method.equals(METHOD_GET)) {                    
+            doGet(req, resp);
+
+        } else if (method.equals(METHOD_HEAD)) {
+            doHead(req, resp);
+
+        } else if (method.equals(METHOD_POST)) {
+            doPost(req, resp);
+
+        } else if (method.equals(METHOD_PUT)) {
+            doPut(req, resp);
+
+        } else if (method.equals(METHOD_DELETE)) {
+            doDelete(req, resp);
+
+        } else if (method.equals(METHOD_OPTIONS)) {
+            doOptions(req,resp);
+
+        } else if (method.equals(METHOD_TRACE)) {
+            doTrace(req,resp);
+
+        } else {
+            resp.sendError(HttpServletResponse.SC_NOT_IMPLEMENTED, errMsg);
+        }
+    }
+```
+위 코드는 HttpServlet에 정의되어 있는 간략하게 바꾼 service() 메서드이다.  
+request 요청으로부터 getMethod() 메서드를 사용하여 간편하게 해당 메서드를 파싱받고 해당 메서드의 종류에 따라 메서드를 실행시켜주고 있다.  
+```java
+public class MyServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        // 할 일
+    }
+}
+```
+우리가 할 일은 다음과 같이 doGet, doPost ... 등 메서드를 재정의해주는 일만 하면 된다!
+
+```
+// 요청
+GET /api/products HTTP/1.1
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.28.0
+Accept: */*
+Postman-Token: abfcbcf8-9317-430c-86b9-c00020eb736e
+Host: localhost:8080
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+// 응답
+Location: http://localhost:8080/api/products/6
+Content-Length: 202
+Content-Type: application/json
+Date: Sun, 02 May 2021 14:56:41 GMT
+Keep-Alive: timeout=60
+```
+위 코드는 HTTP 요청과 응답이다. 개발자들이 이 텍스트를 분석하고 파싱하여, 위의 요청 코드를 아래의 응답코드로 만들어 주려면 매우 힘든 개발이 될 것이다.  
+
+![](./images/2021-06-19-13-09-59.png)
+서블릿은 위와 같은 메서드들을 통해 필요한 http 요청 정보를 간단하게 가져올 수 있다. 이는 개발자들의 일거리를 줄여준다!~~편리하구만~~ 따라서 개발자는 비즈니스 로직에 집중할 수 있다.  
 
 <br>
 
@@ -264,3 +337,4 @@ protected void doDispatch(HttpServletRequest request, HttpServletResponse respon
 - https://velog.io/@han_been/%EC%84%9C%EB%B8%94%EB%A6%BF-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88Servlet-Container-%EB%9E%80
 - https://galid1.tistory.com/525
 - https://github.com/binghe819/TIL/blob/master/Spring/MVC/image/mvc-flow.png
+- https://www.youtube.com/watch?v=calGCwG_B4Y&list=PLgXGHBqgT2TvpJ_p9L_yZKPifgdBOzdVH&index=9
