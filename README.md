@@ -32,4 +32,4 @@
 * [SOLID](https://github.com/pika96/TIL/blob/master/OOP/SOLID.md)
 
 ## 네트워크
-* [CORS](https://github.com/pika96/TIL/blob/master/Spring/CORS.md)
+* [CORS](https://github.com/pika96/TIL/blob/master/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/CORS.md)
