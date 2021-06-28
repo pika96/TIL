@@ -35,3 +35,4 @@
 
 ## 네트워크
 * [CORS](https://github.com/pika96/TIL/blob/master/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/CORS.md)
+* [웹 동작 원리](https://github.com/pika96/TIL/blob/master/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/%EC%9B%B9%20%EB%8F%99%EC%9E%91%20%EC%9B%90%EB%A6%AC.md)
