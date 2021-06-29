@@ -24,6 +24,7 @@
 * [예외 처리](https://github.com/pika96/TIL/blob/master/JAVA/%EC%98%88%EC%99%B8%20%EC%B2%98%EB%A6%AC.md)
 * [Pattern & Matcher](https://github.com/pika96/TIL/blob/master/JAVA/Pattern%20%26%20Matcher.md)
 * [Primitive vs Wrapper](https://github.com/pika96/TIL/blob/master/JAVA/Wrapper%20vs%20Primitive.md)
+* [김영한님의 JPA 강의](https://github.com/pika96/TIL/tree/master/JAVA/JPA)
 
 ## 데이터 베이스
 - [h2](https://github.com/pika96/TIL/blob/master/DataBase/h2/h2.md)
