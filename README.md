@@ -44,6 +44,8 @@
 * [라우터](https://github.com/pika96/TIL/blob/master/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/%EB%9D%BC%EC%9A%B0%ED%84%B0.md)
 * [맥 주소](https://github.com/pika96/TIL/blob/master/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/%EB%A7%A5%20%EC%A3%BC%EC%86%8C.md)
 
+## 운영체제
+* [운영체제의 정보기술과 원리](https://github.com/pika96/TIL/tree/master/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%99%80%20%EC%A0%95%EB%B3%B4%EA%B8%B0%EC%88%A0%EC%9D%98%20%EC%9B%90%EB%A6%AC)
 
 ## ETC
 * [소셜 로그인 인증](https://github.com/pika96/TIL/blob/master/ETC/%EC%86%8C%EC%85%9C%20%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%9D%B8%EC%A6%9D%20%EA%B3%BC%EC%A0%95.md)
