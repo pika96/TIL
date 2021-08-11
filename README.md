@@ -49,3 +49,4 @@
 
 ## ETC
 * [소셜 로그인 인증](https://github.com/pika96/TIL/blob/master/ETC/%EC%86%8C%EC%85%9C%20%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%9D%B8%EC%A6%9D%20%EA%B3%BC%EC%A0%95.md)
+* [추천 알고리즘 적용](https://github.com/pika96/TIL/blob/master/ETC/%EC%B6%94%EC%B2%9C%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98.md)
