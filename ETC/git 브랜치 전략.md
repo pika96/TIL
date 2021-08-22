@@ -4,11 +4,14 @@
     - [메인 브랜치(Main branch)](#메인-브랜치main-branch)
     - [보조 브랜치(Supporting branch)](#보조-브랜치supporting-branch)
   - [GitHub-flow](#github-flow)
+  - [git-flow? github-flow?](#git-flow-github-flow)
+  - [주절주절 깃 브랜치 전략](#주절주절-깃-브랜치-전략)
   - [참고 자료](#참고-자료)
 
 # git 브랜치 전략
 
 ## Git-flow
+
 ![](./images/2021-08-21-13-40-15.png)
 
 Git-flow 전략은 위의 그림에서 볼 수 있듯이 5개의 브랜치가 존재한다.
@@ -17,7 +20,7 @@ Git-flow 전략은 위의 그림에서 볼 수 있듯이 5개의 브랜치가 �
 - develop 브랜치
 - feature 브랜치
 - release 브랜치
-- hotfixes 브랜치
+- hotfix 브랜치
 
 가장 중심이 되는 브랜치는 master와 develop 브랜치이며, merge된 feature, release, hotfix 브랜치는 삭제한다.
 
@@ -142,6 +145,22 @@ master 브랜치는 항상 배포가 되기 때문에 stable 해야하며 엄격
 - 기능에 대한 모든 리뷰와 테스트가 끝난 후 master로 merge한다.
 - master 브랜치는 stable 하고 엄격하게 관리되야하기 때문에 충분한 논의가 진행된 후 반영하도록 한다.
 - master 브랜치는 CI/CD 자동화 배포를 통해 바로 배포가 될 수 있도록 설정해놓는다.
+
+<br>
+
+## git-flow? github-flow?
+
+git-flow는 각 브랜치의 역할을 규정하기 때문에 계획적인 릴리즈를 스케줄링하는 대규모 프로젝트에 적합하다. 그렇기 때문에 일부 프로젝트에서는 불필요한 절차를 준수하도록하여, 오히려 생산성을 떨어뜨릴 수 있다.  
+따라서 대규모가 아닌 가벼운 프로젝트라면 github-flow 전략을 취하는 것이 나아보인다!
+
+<br>
+
+## 주절주절 깃 브랜치 전략
+
+주절주절의 깃 브랜치 전략에서는 git-flow 전략을 채택했다.  
+조금 다른 점이 있다면, 프론트와 백엔드 두 가지의 기능을 구현하였기 때문에, feature 브랜치가 프론트와 백엔드 두 가지로 나눠져 있다는 점이다.  
+
+또한 develop 브랜치를 깔끔하게 가져가기 위해 feature 브랜치를 develop 브랜치로 머지할 경우 squash merge를 사용하여 merge 하였다.
 
 ## 참고 자료
 - https://nvie.com/posts/a-successful-git-branching-model/
