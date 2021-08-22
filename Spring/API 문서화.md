@@ -36,7 +36,7 @@ Swagger는 API를 테스트 해볼 수 있다. 아래 그림처럼 값을 직접
 
 ![](./images/2021-08-22-19-30-28.png)
 
-그러나 Swagger는 prod코드에 애노테이션으로 직접 정의를 해주어야하기 때문에 prod 코드가 더러워진다는 장점이 있다.
+그러나 Swagger는 prod코드에 애노테이션으로 직접 정의를 해주어야하기 때문에 prod 코드가 더러워진다는 단점이 있다.
 
 ![](./images/2021-08-22-18-21-09.png)
 
@@ -107,7 +107,7 @@ ext {
 }
 
 test {
-    finalizedBy 'jacocoTestReport'
+    useJUnitPlatform()
 }
 
 asciidoctor {
