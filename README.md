@@ -27,6 +27,7 @@
 * [Pattern & Matcher](https://github.com/pika96/TIL/blob/master/JAVA/Pattern%20%26%20Matcher.md)
 * [Primitive vs Wrapper](https://github.com/pika96/TIL/blob/master/JAVA/Wrapper%20vs%20Primitive.md)
 * [김영한님의 JPA 강의](https://github.com/pika96/TIL/tree/master/JAVA/JPA)
+* [JPA N+1 문제](./JAVA/JPA%20N+1.md)
 
 ## 데이터 베이스
 - [h2](https://github.com/pika96/TIL/blob/master/DataBase/h2/h2.md)
