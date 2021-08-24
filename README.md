@@ -50,7 +50,7 @@
 * [운영체제의 정보기술과 원리](https://github.com/pika96/TIL/tree/master/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%EC%99%80%20%EC%A0%95%EB%B3%B4%EA%B8%B0%EC%88%A0%EC%9D%98%20%EC%9B%90%EB%A6%AC)
 
 ## ETC
-* [소셜 로그인 인증](https://github.com/pika96/TIL/blob/master/ETC/%EC%86%8C%EC%85%9C%20%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%9D%B8%EC%A6%9D%20%EA%B3%BC%EC%A0%95.md)
+* [소셜 로그인 인증](./ETC/OAuth%202.0.md)
 * [추천 알고리즘 적용](https://github.com/pika96/TIL/blob/master/ETC/%EC%B6%94%EC%B2%9C%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98.md)
 * [서브 모듈](https://github.com/pika96/TIL/blob/master/ETC/%EC%84%9C%EB%B8%8C%20%EB%AA%A8%EB%93%88.md)
 * [git 브랜치 전략](https://github.com/pika96/TIL/blob/master/ETC/git%20%EB%B8%8C%EB%9E%9C%EC%B9%98%20%EC%A0%84%EB%9E%B5.md)
